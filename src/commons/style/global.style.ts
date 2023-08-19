@@ -1,17 +1,9 @@
 import { css } from "@emotion/react";
 import { Common } from "./emotion";
 import styled from "@emotion/styled";
-import { mediaQuery } from "./mediaQuery.style";
 
 export const GlobalStyle = css`
   @import url("https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=Rubik+Mono+One&display=swap");
-  @font-face {
-    font-family: "Chosunilbo_myungjo";
-    src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Chosunilbo_myungjo.woff")
-      format("woff");
-    font-weight: normal;
-    font-style: normal;
-  }
   * {
     margin: 0;
     box-sizing: border-box;
@@ -21,12 +13,10 @@ export const GlobalStyle = css`
     }
   }
   body {
-    font-family: ${Common.font.default};
+    font-family: "Rajdhani", sans-serif;
     font-weight: 400;
     font-size: 16px;
-    color: ${Common.color.white};
-    background-image: url("/images/noise-background.jpg");
-    background-size: contain;
+    color: ${Common.color.default};
   }
   em {
     font-style: normal;
@@ -69,7 +59,4 @@ export const Container = styled.div`
   max-width: 1400px;
   margin: 0 auto;
   height: 100%;
-  ${mediaQuery[0]} {
-    padding: 0 20px;
-  }
 `;
