@@ -21,7 +21,7 @@ export const ContentsUI = () => {
       ],
     },
     {
-      name: "헤이즐넛 아메리카노",
+      name: "헤이즐넛아메리카노",
       price: "2,000",
       option: [
         {
@@ -35,7 +35,21 @@ export const ContentsUI = () => {
       ],
     },
     {
-      name: "디카페인",
+      name: "허니아메리카노",
+      price: "2,000",
+      option: [
+        {
+          name: "약하게",
+          price: "500",
+        },
+        {
+          name: "약하게",
+          price: "500",
+        },
+      ],
+    },
+    {
+      name: "에스프레소",
       price: "2,000",
       option: [
         {

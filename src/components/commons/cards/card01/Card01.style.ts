@@ -2,25 +2,24 @@ import styled from "@emotion/styled";
 import { Common } from "../../../../commons/style/emotion";
 
 export const Wrapper = styled.div`
-  width: 100%;
   display: flex;
   gap: 1em;
-  height: 230px;
+  height: 180px;
   padding: 1em;
   border-radius: 10px;
   background: ${Common.color.white};
 `;
 
 export const ProductImage = styled.div`
-  width: 160px;
+  width: 120px;
   height: 100%;
   border-radius: 10px;
   background: rgba(0, 0, 0, 0.1);
 `;
 
 export const ProductInfo = styled.div`
-  width: calc(100% - 160px);
-  padding: 20px 0;
+  width: calc(100% - 120px);
+  margin-top: 1em;
   display: flex;
   gap: 6px;
   flex-direction: column;
@@ -29,7 +28,7 @@ export const ProductInfo = styled.div`
 `;
 
 export const ProductName = styled.h5`
-  font-size: 1.6em;
+  font-size: 1em;
 `;
 export const ProductPrice = styled.p`
   display: flex;
@@ -43,4 +42,10 @@ export const ProductPrice = styled.p`
     font-size: 1.3em;
     color: ${Common.color.point};
   }
+`;
+
+export const AddBtn = styled.div`
+  width: 100%;
+  height: 45px;
+  margin-top: auto;
 `;
