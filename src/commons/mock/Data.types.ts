@@ -12,7 +12,7 @@ export interface ITypeProducts {
   categoryId: string;
   name: string;
   price: number;
-  option?: ITypeProductOption[];
+  option?: ITypeProductOption[] | undefined;
 }
 export interface ITypeProductOption {
   name: string;

@@ -10,8 +10,6 @@ import {
 import { Button01 } from "../../buttons/button01/Button01.container";
 
 export const Card01 = (props: IPropsCard01) => {
-  const onClickBtn = () => {};
-
   return (
     <Wrapper>
       <ProductImage></ProductImage>
@@ -21,7 +19,10 @@ export const Card01 = (props: IPropsCard01) => {
           <span>{props.product.price}</span>원
         </ProductPrice>
         <AddBtn>
-          <Button01 btnText="choice" onClickBtn={onClickBtn} />
+          <Button01
+            btnText="choice"
+            onClickBtn={props.onClickOpenModal(props.product)}
+          />
         </AddBtn>
       </ProductInfo>
     </Wrapper>
