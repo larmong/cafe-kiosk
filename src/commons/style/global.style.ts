@@ -17,6 +17,10 @@ export const GlobalStyle = css`
     font-weight: 400;
     font-size: 16px;
     color: ${Common.color.default};
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
   em {
     font-style: normal;

@@ -1,5 +1,5 @@
 import { Wrapper } from "./Footer.style";
 
 export const Footer = () => {
-  return <Wrapper>Footer</Wrapper>;
+  return <Wrapper>Copyright ⓒ2023 CAFEKIOSK All rights reserved.</Wrapper>;
 };

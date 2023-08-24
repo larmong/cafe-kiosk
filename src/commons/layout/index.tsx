@@ -11,18 +11,22 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   height: 100vh;
-  max-width: 1300px;
+  max-width: 1500px;
   margin: 0 auto;
-  border: 1px solid coral;
+  border: 1px solid ${Common.color.line};
 `;
 const Page = styled.div`
-  width: calc(100vw - 300px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: calc(100vw - 400px);
   border-right: 1px solid ${Common.color.line};
   background: ${Common.color.bg};
   min-width: 1000px;
 `;
 const BasketWrapper = styled.div`
-  width: 300px;
+  width: 400px;
+  background: #fff;
 `;
 
 export default function Layout(props: ILayoutProps) {
