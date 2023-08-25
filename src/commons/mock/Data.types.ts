@@ -12,9 +12,10 @@ export interface ITypeProducts {
   categoryId: string;
   name: string;
   price: number;
-  option?: ITypeProductOption[] | undefined;
+  option?: ITypeProductOption[] | [];
 }
 export interface ITypeProductOption {
   name: string;
   price: number;
+  state: boolean;
 }

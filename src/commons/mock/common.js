@@ -6,10 +6,13 @@ const coffee = [
     option: [
       {
         name: "연하게",
+        price: 0,
+        state: false,
       },
       {
         name: "2샷",
         price: 500,
+        state: false,
       },
     ],
   },
@@ -21,6 +24,7 @@ const coffee = [
       {
         name: "2샷",
         price: 500,
+        state: false,
       },
     ],
   },
@@ -32,6 +36,7 @@ const coffee = [
       {
         name: "2샷",
         price: 500,
+        state: false,
       },
     ],
   },
@@ -50,10 +55,13 @@ const milktea = [
     option: [
       {
         name: "두유로 변경",
+        price: 0,
+        state: false,
       },
       {
         name: "2샷",
         price: 500,
+        state: false,
       },
     ],
   },
@@ -65,13 +73,17 @@ const milktea = [
       {
         name: "2샷",
         price: 500,
+        state: false,
       },
       {
         name: "버블 추가",
         price: 1000,
+        state: false,
       },
       {
         name: "두유로 변경",
+        price: 0,
+        state: false,
       },
     ],
   },
@@ -97,6 +109,8 @@ const milktea = [
     option: [
       {
         name: "두유로 변경",
+        price: 0,
+        state: false,
       },
     ],
   },
@@ -116,6 +130,7 @@ const juice = [
       {
         name: "딸기 2배",
         price: 1000,
+        state: false,
       },
     ],
   },

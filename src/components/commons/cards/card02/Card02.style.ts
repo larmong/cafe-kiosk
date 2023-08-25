@@ -1,25 +1,14 @@
 import styled from "@emotion/styled";
 import { Common } from "../../../../commons/style/emotion";
+import { IoCloseSharp } from "react-icons/io5";
 
 export const Wrapper = styled.div`
-  position: relative;
   display: flex;
   gap: 1em;
   height: 150px;
   border-radius: 10px;
   background: ${Common.color.white};
   margin-bottom: 20px;
-`;
-export const Delete = styled.div`
-  position: absolute;
-  top: 7px;
-  right: 0;
-  cursor: pointer;
-  color: ${Common.color.point};
-  svg {
-    width: 25px;
-    height: 25px;
-  }
 `;
 
 export const ProductImage = styled.div`
@@ -38,7 +27,21 @@ export const ProductInfo = styled.div`
   border-radius: 10px;
 `;
 
+export const ProductTop = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const Delete = styled(IoCloseSharp)`
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+  color: ${Common.color.point};
+`;
+
 export const ProductName = styled.h5`
+  padding-top: 6px;
   font-size: 1.1em;
 `;
 

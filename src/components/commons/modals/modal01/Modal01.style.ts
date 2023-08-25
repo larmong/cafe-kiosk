@@ -87,6 +87,6 @@ export const OptionContainer = styled.div`
 
 export const AddBtn = styled.div`
   width: 100%;
-  //height: 45px;
+  height: 45px;
   margin-top: auto;
 `;

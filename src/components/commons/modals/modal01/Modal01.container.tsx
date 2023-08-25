@@ -12,18 +12,29 @@ import {
   Wrapper,
 } from "./Modal01.style";
 import { Options } from "../../option/Option.container";
-import { ITypeProductOption } from "../../../../commons/mock/Data.types";
-import { IPropsModal01 } from "./Modal01.types";
+import {
+  ITypeProductOption,
+  ITypeProducts,
+} from "../../../../commons/mock/Data.types";
 import { Button01 } from "../../buttons/button01/Button01.container";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
+import { Quantity } from "../../quantity/Quantity.container";
+import { addProductState, productState } from "../../../../commons/store/store";
+import { useRecoilState } from "recoil";
 
-export const Modal01 = (props: IPropsModal01) => {
+export const Modal01 = () => {
   const [options, setOptions] = useState([]);
-  const [addProduct, setAddProduct] = useState({});
+  const [product] = useRecoilState<ITypeProducts>(productState);
+  const [basketItem, setBasketItem] =
+    useRecoilState<ITypeProducts>(addProductState);
 
   const onClickAddBasket = () => {
-    console.log(addProduct);
+    // setBasketItem(product);
   };
+
+  // useEffect(() => {
+  //   console.log(options);
+  // }, [options]);
 
   return (
     <Wrapper>
@@ -31,19 +42,19 @@ export const Modal01 = (props: IPropsModal01) => {
         <ProductImage></ProductImage>
         <ProductInfo>
           <ProductTop>
-            <ProductName>{props.product.name}</ProductName>
+            <ProductName>{product.name}</ProductName>
             <ProductPrice>
-              <span>{props.product.price}</span>원
+              <span>{product.price}</span>원
             </ProductPrice>
-            <div>- 1 +</div>
+            <Quantity />
           </ProductTop>
           <ProductOption>
             <OptionTitle>옵션</OptionTitle>
-            {props.product.option?.length === 0 ? (
+            {product.option?.length === 0 ? (
               <div>옵션이 없습니다.</div>
             ) : (
               <OptionContainer>
-                {props.product.option?.map(
+                {product.option?.map(
                   (el: ITypeProductOption, index: number) => (
                     <Fragment key={index}>
                       <Options
@@ -58,10 +69,7 @@ export const Modal01 = (props: IPropsModal01) => {
             )}
           </ProductOption>
           <AddBtn>
-            <Button01
-              btnText="choice"
-              onClickBtn={onClickAddBasket(addProduct)}
-            />
+            <Button01 btnText="choice" onClickBtn={onClickAddBasket} />
           </AddBtn>
         </ProductInfo>
       </ModalContainer>

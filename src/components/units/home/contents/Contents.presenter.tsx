@@ -1,84 +1,65 @@
-import { CardContainer, ProductContainer, Wrapper } from "./Contents.style";
+import {
+  CardContainer,
+  ProductContainer,
+  Title,
+  Wrapper,
+} from "./Contents.style";
 import Menu from "../../../commons/menu/Menu.container";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Card01 } from "../../../commons/cards/card01/Card01.container";
 import { Modal01 } from "../../../commons/modals/modal01/Modal01.container";
 import { ITypeProducts } from "../../../../commons/mock/Data.types";
+import { useRecoilState } from "recoil";
+import { productState } from "../../../../commons/store/store";
 
 export const ContentsUI = () => {
   const [isCate, setIsCate] = useState("coffee");
-  const [cardList, setCardList] = useState([
-    {
-      name: "아메리카노",
-      price: 1500,
-      option: [
-        {
-          name: "약하게",
-          price: 0,
-        },
-        {
-          name: "2샷",
-          price: 500,
-        },
-      ],
-    },
-    {
-      name: "헤이즐넛아메리카노",
-      price: 2000,
-      option: [
-        {
-          name: "약하게",
-          price: 0,
-        },
-        {
-          name: "2샷",
-          price: 500,
-        },
-      ],
-    },
-    {
-      name: "허니아메리카노",
-      price: 2000,
-      option: [
-        {
-          name: "약하게",
-          price: 0,
-        },
-        {
-          name: "2샷",
-          price: 500,
-        },
-      ],
-    },
-    {
-      name: "에스프레소",
-      price: 2000,
-      option: [
-        {
-          name: "약하게",
-          price: 0,
-        },
-        {
-          name: "2샷",
-          price: 500,
-        },
-      ],
-    },
-  ]);
-  const [modalData, setModalData] = useState({});
-  const [isModal, setIsModal] = useState(false);
 
-  const onClickOpenModal = (product: ITypeProducts) => () => {
-    setModalData(product);
+  const [isModal, setIsModal] = useState(false);
+  const [allProducts, setAllProducts] = useState([]);
+  const [products, setProducts] = useState([]);
+
+  const [isData, setIsData] = useState(false);
+
+  const [_, setProduct] = useRecoilState<ITypeProducts>(productState);
+
+  const onClickOpenModal = (item) => () => {
     setIsModal((prev: boolean) => !prev);
+    setProduct(item);
+    console.log(item);
   };
+
+  useEffect(() => {
+    const getCategories = async () => {
+      if (!isData) {
+        try {
+          const result = await fetch("/products").then((res: Response) =>
+            res.json()
+          );
+          setAllProducts(result.data);
+          const filteredProducts = result.data.filter(
+            (product: ITypeProducts) => product.categoryId === isCate
+          );
+          setProducts(filteredProducts);
+          setIsData(true);
+        } catch (error) {}
+      } else {
+        const filteredProducts = allProducts.filter(
+          (product: ITypeProducts) => product.categoryId === isCate
+        );
+        setProducts(filteredProducts);
+      }
+    };
+    void getCategories();
+  }, [isCate]);
 
   return (
     <Wrapper>
       <Menu isCate={isCate} setIsCate={setIsCate} />
       <ProductContainer>
+        <Title>∞ {isCate} ∞</Title>
         <CardContainer>
-          {cardList.map((el: ITypeProducts, index: number) => (
+          {products.map((el, index: number) => (
             <Card01
               key={index}
               product={el}
@@ -87,7 +68,7 @@ export const ContentsUI = () => {
           ))}
         </CardContainer>
       </ProductContainer>
-      {isModal && <Modal01 product={modalData} />}
+      {isModal && <Modal01 />}
     </Wrapper>
   );
 };
